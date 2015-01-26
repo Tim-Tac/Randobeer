@@ -67,7 +67,7 @@ public class MainActivity extends Activity {
               builder.setNegativeButton("Annuler",new DialogInterface.OnClickListener() {
                   @Override
                   public void onClick(DialogInterface dialog, int which) {
-                      Toast.makeText(getApplicationContext(),"b",Toast.LENGTH_SHORT).show();
+                      Toast.makeText(getApplicationContext(),"vous avez annulé",Toast.LENGTH_SHORT).show();
                   }
               });
 
