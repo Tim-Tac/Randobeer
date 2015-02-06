@@ -13,7 +13,6 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,6 +20,7 @@ import java.util.List;
 public class MainActivity extends Activity {
     private List<String> bieres = new ArrayList<String>();
     private List<String> personnes = new ArrayList<String>();
+    private String tpers;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +40,7 @@ public class MainActivity extends Activity {
         {
             texte[i] = new TextView(this);
             texte[i].setTextSize(14);
-            texte[i].setText("hi");
+            texte[i].setText("ho");
 
             RelativeLayout.LayoutParams textViewLayoutParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
             textViewLayoutParams.setMargins(5, 30, 0, 0);
@@ -119,7 +119,7 @@ public class MainActivity extends Activity {
             builder.setPositiveButton("Valider", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    String tpers = input.getText().toString();
+                    tpers = input.getText().toString();
                 }
             });
 
@@ -132,7 +132,7 @@ public class MainActivity extends Activity {
             AlertDialog dialog = builder.create();
             dialog.show();
 
-            personnes.add("tpers");
+            personnes.add(tpers);
 
         }
     });
