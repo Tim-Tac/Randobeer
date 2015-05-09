@@ -16,8 +16,8 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class MainActivity extends Activity {
+
     private List<String> bieres = new ArrayList<String>();
     private List<String> personnes = new ArrayList<String>();
     private String tpers;
