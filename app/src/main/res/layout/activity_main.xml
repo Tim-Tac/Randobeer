@@ -1,4 +1,4 @@
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,56 +7,25 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    android:orientation="vertical"
     android:id="@+id/layout"
     tools:context=".MainActivity">
 
     <TextView
-        android:text="Randobeer"
-        android:textSize="25dp"
+        android:text="@string/app_name"
+        android:textSize="30sp"
         android:textStyle="italic"
         android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <LinearLayout
+    <Button
+        android:id="@+id/launch"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp">
-
-        <Button
-            android:id="@+id/lancer"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Lancer"
-            android:layout_marginLeft="50sp"
-            android:layout_marginRight="50sp"/>
-
-        </LinearLayout>
+        android:layout_alignParentBottom="true"
+        android:text="Go !"
+        android:layout_marginLeft="50sp"
+        android:layout_marginRight="50sp"/>
 
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp" >
-
-        <Button
-            android:id="@+id/beer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Ajouter une bière"
-
-            />
-
-        <Button
-            android:id="@+id/person"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Ajouter une personne"
-            android:layout_gravity="right"
-            />
-
-        </LinearLayout>
-
-
-</LinearLayout>
+</RelativeLayout>
