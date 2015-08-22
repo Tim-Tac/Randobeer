@@ -48,15 +48,16 @@
                 android:text="Add beverages" />
 
             <TextView
-                android:visibility="gone"
+                android:visibility="visible"
                 android:id="@+id/no_beverages"
                 android:layout_marginTop="5dp"
                 android:layout_marginLeft="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="No beverages"/>
+                android:text="No beverages in list"/>
 
             <ListView
+                android:visibility="gone"
                 android:id="@+id/list_beverage"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent">
@@ -88,18 +89,19 @@
                 android:id="@+id/someone"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
-                android:text="Add beverages" />
+                android:text="Add someone" />
 
             <TextView
-                android:visibility="gone"
+                android:visibility="visible"
                 android:id="@+id/no_someone"
                 android:layout_marginTop="5dp"
                 android:layout_marginLeft="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Nobody"/>
+                android:text="Nobody in list"/>
 
             <ListView
+                android:visibility="gone"
                 android:id="@+id/list_someone"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent">
