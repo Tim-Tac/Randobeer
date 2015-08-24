@@ -76,9 +76,6 @@ public class MainActivity extends Activity {
                     addBeverage.setVisibility(View.GONE);
                     go.setVisibility(View.GONE);
                 }
-
-
-
             }
         });
 
@@ -101,12 +98,20 @@ public class MainActivity extends Activity {
         }
     }
 
+
     public void UpdatePeople()
     {
         if(!array_people.isEmpty())
         {
             nobody.setVisibility(View.GONE);
             listSomeone.setVisibility(View.VISIBLE);
+            ListViewAdapterPeople adapter = new ListViewAdapterPeople();
+            listSomeone.setAdapter(adapter);
+        }
+        else
+        {
+            nobody.setVisibility(View.VISIBLE);
+            listSomeone.setVisibility(View.GONE);
         }
     }
 
@@ -137,7 +142,6 @@ public class MainActivity extends Activity {
             convertView = inflater.inflate(R.layout.list_cell,parent,false);
 
             TextView element = (TextView)convertView.findViewById(R.id.element);
-            ImageView delete = (ImageView)convertView.findViewById(R.id.delete);
 
             String temp_element  = array_beer.get(position);
 
@@ -147,5 +151,39 @@ public class MainActivity extends Activity {
         }
     }
 
+
+    public class ListViewAdapterPeople extends BaseAdapter
+    {
+
+        @Override
+        public int getCount() {
+            return array_people.size();
+        }
+
+        @Override
+        public Object getItem(int position) {
+            return array_people.get(position);
+        }
+
+        @Override
+        public long getItemId(int position) {
+            return 0;
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+
+            LayoutInflater inflater = LayoutInflater.from(parent.getContext());
+            convertView = inflater.inflate(R.layout.list_cell,parent,false);
+
+            TextView element = (TextView)convertView.findViewById(R.id.element);
+
+            String temp_element  = array_people.get(position);
+
+            element.setText(temp_element);
+
+            return convertView;
+        }
+    }
 
 }
