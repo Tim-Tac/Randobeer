@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -114,7 +113,6 @@ public class MainActivity extends Activity {
             listSomeone.setVisibility(View.GONE);
         }
     }
-
 
 
     public class ListViewAdapterBeverages extends BaseAdapter
