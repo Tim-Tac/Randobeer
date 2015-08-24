@@ -5,8 +5,10 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -15,8 +17,8 @@ import java.util.List;
 
 public class MainActivity extends Activity {
 
-    private List<String> array_beer = new ArrayList<>();
-    private List<String> array_people = new ArrayList<>();
+    private List<Element> array_beer = new ArrayList<>();
+    private List<Element> array_people = new ArrayList<>();
 
     //UI declaration
     private Button go;
@@ -47,7 +49,9 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View v)
             {
-                array_beer.add("beverage");
+                Element element = new Element();
+                element.element = "beverage";
+                array_beer.add(element);
                 UpdateBeverage();
             }
         });
@@ -57,7 +61,9 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View v)
             {
-                array_people.add("someone");
+                Element element = new Element();
+                element.element = "someone";
+                array_people.add(element);
                 UpdatePeople();
             }
         });
@@ -75,6 +81,15 @@ public class MainActivity extends Activity {
                     addBeverage.setVisibility(View.GONE);
                     go.setVisibility(View.GONE);
                 }
+            }
+        });
+
+        listBeverage.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                final Element element = (Element)listBeverage.getItemAtPosition(position);
+                Toast.makeText(getApplicationContext(),element.element,Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -141,9 +156,9 @@ public class MainActivity extends Activity {
 
             TextView element = (TextView)convertView.findViewById(R.id.element);
 
-            String temp_element  = array_beer.get(position);
+            Element temp_element  = array_beer.get(position);
 
-            element.setText(temp_element);
+            element.setText(temp_element.element);
 
             return convertView;
         }
@@ -176,12 +191,18 @@ public class MainActivity extends Activity {
 
             TextView element = (TextView)convertView.findViewById(R.id.element);
 
-            String temp_element  = array_people.get(position);
+            Element temp_element  = array_people.get(position);
 
-            element.setText(temp_element);
+            element.setText(temp_element.element);
 
             return convertView;
         }
+    }
+
+
+    public static class Element
+    {
+        String element;
     }
 
 }
