@@ -1,15 +1,20 @@
 package be.timtac.perso.randobeer;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.text.Editable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.NumberPicker;
 import android.widget.TextView;
 import android.widget.Toast;
 import java.util.ArrayList;
@@ -49,10 +54,36 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View v)
             {
-                Element element = new Element();
-                element.element = "beverage";
-                array_beer.add(element);
-                UpdateBeverage();
+                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                LayoutInflater inflater = LayoutInflater.from(getApplicationContext());
+                View dialog_view = inflater.inflate(R.layout.dialog_element, null);
+
+                final EditText new_element = (EditText)dialog_view.findViewById(R.id.new_element);
+
+                builder.setView(dialog_view);
+
+                builder.setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+
+                        Element element = new Element();
+                        element.element = new_element.getText().toString();
+                        array_beer.add(element);
+                        UpdateBeverage();
+                    }
+                });
+
+                builder.setNegativeButton("cancel", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        //nothing to do
+                    }
+                });
+
+                AlertDialog dialog = builder.create();
+                dialog.show();
+
+
+
+
             }
         });
 
@@ -62,7 +93,7 @@ public class MainActivity extends Activity {
             public void onClick(View v)
             {
                 Element element = new Element();
-                element.element = "someone";
+                element.element = "Tim";
                 array_people.add(element);
                 UpdatePeople();
             }
