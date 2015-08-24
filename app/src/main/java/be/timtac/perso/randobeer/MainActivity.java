@@ -2,8 +2,12 @@ package be.timtac.perso.randobeer;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -45,7 +49,7 @@ public class MainActivity extends Activity {
             public void onClick(View v)
             {
                 array_beer.add("beverage");
-                Update();
+                UpdateBeverage();
             }
         });
 
@@ -55,7 +59,7 @@ public class MainActivity extends Activity {
             public void onClick(View v)
             {
                 array_people.add("someone");
-                Update();
+                UpdatePeople();
             }
         });
 
@@ -81,18 +85,65 @@ public class MainActivity extends Activity {
     }
 
 
-    public void Update()
+    public void UpdateBeverage()
+    {
+        if(!array_beer.isEmpty())
+        {
+            noBeverage.setVisibility(View.GONE);
+            listBeverage.setVisibility(View.VISIBLE);
+            ListViewAdapterBeverages adapter = new ListViewAdapterBeverages();
+            listBeverage.setAdapter(adapter);
+        }
+        else
+        {
+            noBeverage.setVisibility(View.VISIBLE);
+            listBeverage.setVisibility(View.GONE);
+        }
+    }
+
+    public void UpdatePeople()
     {
         if(!array_people.isEmpty())
         {
             nobody.setVisibility(View.GONE);
             listSomeone.setVisibility(View.VISIBLE);
         }
+    }
 
-        if(!array_beer.isEmpty())
-        {
-            noBeverage.setVisibility(View.GONE);
-            listBeverage.setVisibility(View.VISIBLE);
+
+
+    public class ListViewAdapterBeverages extends BaseAdapter
+    {
+
+        @Override
+        public int getCount() {
+            return array_beer.size();
+        }
+
+        @Override
+        public Object getItem(int position) {
+            return array_beer.get(position);
+        }
+
+        @Override
+        public long getItemId(int position) {
+            return 0;
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+
+            LayoutInflater inflater = LayoutInflater.from(parent.getContext());
+            convertView = inflater.inflate(R.layout.list_cell,parent,false);
+
+            TextView element = (TextView)convertView.findViewById(R.id.element);
+            ImageView delete = (ImageView)convertView.findViewById(R.id.delete);
+
+            String temp_element  = array_beer.get(position);
+
+            element.setText(temp_element);
+
+            return convertView;
         }
     }
 
