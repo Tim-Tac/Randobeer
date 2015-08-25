@@ -38,7 +38,7 @@ public class MainActivity extends Activity {
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        //com
 
         go = (Button) findViewById(R.id.launch);
         addSomeOne = (Button)findViewById(R.id.someone);
