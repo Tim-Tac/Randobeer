@@ -11,6 +11,10 @@
         android:layout_height="wrap_content"
         android:hint="Insert new element"
         android:layout_margin="8dp"
-        android:textColor="#222222"/>
+        android:inputType="text"
+        android:singleLine="true"
+        android:textColor="#222222"
+        android:cursorVisible="true"
+        android:textCursorDrawable="@null"/>
 
 </LinearLayout>
