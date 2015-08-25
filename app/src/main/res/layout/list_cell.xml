@@ -8,11 +8,11 @@
     <TextView
         android:id="@+id/element"
         android:layout_marginLeft="5dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="7dp"
         android:textSize="18sp"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="25dp"
         android:text=""
         android:paddingRight="25dp"/>
 
@@ -20,8 +20,8 @@
         android:id="@+id/delete"
         android:layout_alignParentRight="true"
         android:layout_margin="5dp"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:src="@drawable/del"/>
     
 </RelativeLayout>
