@@ -39,7 +39,6 @@ public class MainActivity extends Activity {
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //com
 
         go = (Button) findViewById(R.id.launch);
         addSomeOne = (Button)findViewById(R.id.someone);
@@ -137,7 +136,29 @@ public class MainActivity extends Activity {
                     addSomeOne.setVisibility(View.GONE);
                     addBeverage.setVisibility(View.GONE);
                     go.setVisibility(View.GONE);
+                    back.setVisibility(View.VISIBLE);
+                    relaunch.setVisibility(View.VISIBLE);
                 }
+            }
+        });
+
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addBeverage.setVisibility(View.VISIBLE);
+                addSomeOne.setVisibility(View.VISIBLE);
+                go.setVisibility(View.VISIBLE);
+                back.setVisibility(View.GONE);
+                relaunch.setVisibility(View.GONE);
+            }
+        });
+
+
+        relaunch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(),"soon",Toast.LENGTH_SHORT).show();
             }
         });
 
