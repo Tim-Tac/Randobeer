@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,21 +18,20 @@ import android.widget.TextView;
 import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class MainActivity extends Activity {
 
     private List<Element> array_beer = new ArrayList<>();
     private List<Element> array_people = new ArrayList<>();
     private List<Element> array_beer_randomized = new ArrayList<>();
-    private List<Element> array_beverages_randomized = new ArrayList<>();
+    private List<Element> array_people_randomized = new ArrayList<>();
 
     //UI declaration
     private Button go;
     private Button addSomeOne;
     private Button addBeverage;
     private ListView listBeverage;
-    private ListView listSomeone;
+    private ListView listPeople;
     private TextView nobody;
     private TextView noBeverage;
     private Button back;
@@ -49,7 +49,7 @@ public class MainActivity extends Activity {
         addSomeOne = (Button)findViewById(R.id.someone);
         addBeverage = (Button)findViewById(R.id.beverage);
         listBeverage = (ListView)findViewById(R.id.list_beverage);
-        listSomeone = (ListView)findViewById(R.id.list_people);
+        listPeople = (ListView)findViewById(R.id.list_people);
         noBeverage = (TextView)findViewById(R.id.no_beverages);
         nobody = (TextView)findViewById(R.id.no_someone);
         back = (Button)findViewById(R.id.back);
@@ -141,17 +141,16 @@ public class MainActivity extends Activity {
                     return;
                 }
 
-                if (array_beer.size() > array_people.size())
-                {
-                    Toast.makeText(getApplicationContext(), "Need to add more people", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-
+                //hiding UI of first screen and show second
                 addSomeOne.setVisibility(View.GONE);
                 addBeverage.setVisibility(View.GONE);
                 go.setVisibility(View.GONE);
                 back.setVisibility(View.VISIBLE);
                 relaunch.setVisibility(View.VISIBLE);
+                listBeverage.setVisibility(View.GONE);
+                listPeople.setVisibility(View.GONE);
+                listBeveragesRandomized.setVisibility(View.VISIBLE);
+                listPeopleRandomized.setVisibility(View.VISIBLE);
 
                 MakeMatching();
             }
@@ -166,6 +165,10 @@ public class MainActivity extends Activity {
                 go.setVisibility(View.VISIBLE);
                 back.setVisibility(View.GONE);
                 relaunch.setVisibility(View.GONE);
+                listBeveragesRandomized.setVisibility(View.GONE);
+                listPeopleRandomized.setVisibility(View.GONE);
+                listPeople.setVisibility(View.VISIBLE);
+                listBeverage.setVisibility(View.VISIBLE);
             }
         });
 
@@ -182,6 +185,25 @@ public class MainActivity extends Activity {
 
     public void MakeMatching()
     {
+        array_beer_randomized.clear();
+        array_people_randomized.clear();
+
+        for (int i = 0 ; i < array_people.size() ; i++)
+        {
+            array_people_randomized.add(array_people.get(i));
+        }
+
+        for (int j = 0 ; j < array_beer.size() ; j++)
+        {
+            array_beer_randomized.add(array_beer.get(j));
+        }
+
+
+        ArrayAdapter<Element> arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, array_beer_randomized);
+        listBeveragesRandomized.setAdapter(arrayAdapter);
+        ArrayAdapter<Element> arrayAdapter2 = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, array_people_randomized);
+        listPeopleRandomized.setAdapter(arrayAdapter2);
+        Toast.makeText(getApplicationContext(),array_beer_randomized.get(0).element,Toast.LENGTH_LONG).show();
 
     }
 
@@ -208,14 +230,14 @@ public class MainActivity extends Activity {
         if(!array_people.isEmpty())
         {
             nobody.setVisibility(View.GONE);
-            listSomeone.setVisibility(View.VISIBLE);
+            listPeople.setVisibility(View.VISIBLE);
             ListViewAdapterPeople adapter = new ListViewAdapterPeople();
-            listSomeone.setAdapter(adapter);
+            listPeople.setAdapter(adapter);
         }
         else
         {
             nobody.setVisibility(View.VISIBLE);
-            listSomeone.setVisibility(View.GONE);
+            listPeople.setVisibility(View.GONE);
         }
     }
 
