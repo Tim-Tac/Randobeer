@@ -1,6 +1,5 @@
 package be.timtac.perso.randobeer;
 
-import android.app.ActionBar;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -32,6 +31,8 @@ public class MainActivity extends Activity {
     private ListView listSomeone;
     private TextView nobody;
     private TextView noBeverage;
+    private Button back;
+    private Button relaunch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -47,6 +48,8 @@ public class MainActivity extends Activity {
         listSomeone = (ListView)findViewById(R.id.list_someone);
         noBeverage = (TextView)findViewById(R.id.no_beverages);
         nobody = (TextView)findViewById(R.id.no_someone);
+        back = (Button)findViewById(R.id.back);
+        relaunch = (Button)findViewById(R.id.relaunch);
 
 
         addBeverage.setOnClickListener(new View.OnClickListener() {
