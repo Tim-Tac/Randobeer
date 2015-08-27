@@ -41,7 +41,8 @@
             android:layout_weight="1"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_marginRight="4dp">
 
             <Button
                 android:id="@+id/someone"
@@ -60,19 +61,18 @@
 
             <ListView
                 android:visibility="gone"
-                android:id="@+id/list_someone"
+                android:id="@+id/list_people"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"/>
 
-            </ListView>
+            <ListView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/list_people_randomized"
+                android:visibility="gone"/>
 
         </LinearLayout>
 
-
-        <LinearLayout
-            android:layout_width="10dp"
-            android:layout_height="match_parent">
-        </LinearLayout>
 
 
         <!-- Beverage list -->
@@ -80,7 +80,8 @@
             android:layout_weight="1"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_marginLeft="4dp">
 
             <Button
                 android:id="@+id/beverage"
@@ -101,9 +102,13 @@
                 android:visibility="gone"
                 android:id="@+id/list_beverage"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"/>
 
-            </ListView>
+            <ListView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/list_beverages_randomized"
+                android:visibility="gone"/>
 
         </LinearLayout>
 

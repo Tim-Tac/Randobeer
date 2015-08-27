@@ -17,11 +17,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class MainActivity extends Activity {
 
     private List<Element> array_beer = new ArrayList<>();
     private List<Element> array_people = new ArrayList<>();
+    private List<Element> array_beer_randomized = new ArrayList<>();
+    private List<Element> array_beverages_randomized = new ArrayList<>();
 
     //UI declaration
     private Button go;
@@ -33,6 +36,8 @@ public class MainActivity extends Activity {
     private TextView noBeverage;
     private Button back;
     private Button relaunch;
+    private ListView listBeveragesRandomized;
+    private ListView listPeopleRandomized;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -44,11 +49,13 @@ public class MainActivity extends Activity {
         addSomeOne = (Button)findViewById(R.id.someone);
         addBeverage = (Button)findViewById(R.id.beverage);
         listBeverage = (ListView)findViewById(R.id.list_beverage);
-        listSomeone = (ListView)findViewById(R.id.list_someone);
+        listSomeone = (ListView)findViewById(R.id.list_people);
         noBeverage = (TextView)findViewById(R.id.no_beverages);
         nobody = (TextView)findViewById(R.id.no_someone);
         back = (Button)findViewById(R.id.back);
         relaunch = (Button)findViewById(R.id.relaunch);
+        listBeveragesRandomized = (ListView)findViewById(R.id.list_beverages_randomized);
+        listPeopleRandomized = (ListView)findViewById(R.id.list_people_randomized);
 
 
         addBeverage.setOnClickListener(new View.OnClickListener() {
@@ -129,16 +136,24 @@ public class MainActivity extends Activity {
             public void onClick(View v) {
 
                 if (array_beer.isEmpty() || array_people.isEmpty())
+                {
                     Toast.makeText(getApplicationContext(), "One or both array(s) are empty", Toast.LENGTH_LONG).show();
-                else if (array_beer.size() > array_people.size())
-                    Toast.makeText(getApplicationContext(), "Need to add more people", Toast.LENGTH_SHORT).show();
-                else {
-                    addSomeOne.setVisibility(View.GONE);
-                    addBeverage.setVisibility(View.GONE);
-                    go.setVisibility(View.GONE);
-                    back.setVisibility(View.VISIBLE);
-                    relaunch.setVisibility(View.VISIBLE);
+                    return;
                 }
+
+                if (array_beer.size() > array_people.size())
+                {
+                    Toast.makeText(getApplicationContext(), "Need to add more people", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                addSomeOne.setVisibility(View.GONE);
+                addBeverage.setVisibility(View.GONE);
+                go.setVisibility(View.GONE);
+                back.setVisibility(View.VISIBLE);
+                relaunch.setVisibility(View.VISIBLE);
+
+                MakeMatching();
             }
         });
 
@@ -161,6 +176,12 @@ public class MainActivity extends Activity {
                 Toast.makeText(getApplicationContext(),"soon",Toast.LENGTH_SHORT).show();
             }
         });
+
+    }
+
+
+    public void MakeMatching()
+    {
 
     }
 
@@ -293,5 +314,6 @@ public class MainActivity extends Activity {
     {
         String element;
     }
+
 
 }
